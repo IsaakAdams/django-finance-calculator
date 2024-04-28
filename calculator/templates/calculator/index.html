@@ -1,0 +1,23 @@
+{% extends "calculator/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="row mt-5">
+    <div class="col-12 col-md-6 mx-md-auto">
+        <h1>Investment Calculator</h1>
+
+        <form method="post">
+            {% comment %} Protects form from cross site request forgery {% endcomment %}
+            {% csrf_token %}
+
+            {% comment %} Render form created in python view get request {% endcomment %}
+            {{ form | crispy }}
+
+            <button class="btn btn-primary" type="submit">Calculate</button>
+
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
